@@ -1,0 +1,15 @@
+.register-container {
+  max-width: 400px;
+  margin: 20px auto 0;
+
+  h2 {
+    font-weight: 700;
+    color: var(--ion-color-primary);
+  }
+
+  ion-item {
+    --padding-start: 0;
+    font-size: 0.9rem;
+    color: var(--ion-color-medium);
+  }
+}

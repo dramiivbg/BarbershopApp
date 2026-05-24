@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login-container">
+    <div class="ion-text-center">
+      <img src="assets/icon/barber.svg" alt="Logo" style="width: 150px; margin-bottom: 20px;">
+      <h2>¡Bienvenido!</h2>
+      <p>Inicia sesión para continuar</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <ion-input
+        label="Correo electrónico"
+        labelPlacement="floating"
+        fill="outline"
+        type="email"
+        formControlName="email"
+        placeholder="ejemplo@correo.com"
+        class="ion-margin-bottom"
+        errorText="Ingresa un correo válido">
+      </ion-input>
+
+      <ion-input
+        label="Contraseña"
+        labelPlacement="floating"
+        fill="outline"
+        type="password"
+        formControlName="password"
+        placeholder="********"
+        class="ion-margin-bottom"
+        errorText="La contraseña es obligatoria">
+      </ion-input>
+
+      <ion-button expand="block" type="submit" [disabled]="!loginForm.valid" class="ion-margin-top">
+        <ion-spinner name="crescent" *ngIf="isSubmitting()"></ion-spinner>
+        <span *ngIf="!isSubmitting()">Iniciar Sesión</span>
+      </ion-button>
+
+      <ion-button expand="block" fill="clear" (click)="goToRegister()">
+        ¿No tienes cuenta? Regístrate aquí
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

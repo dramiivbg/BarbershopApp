@@ -1,0 +1,19 @@
+.login-container {
+  max-width: 400px;
+  margin: 40px auto 0;
+  
+  h2 {
+    font-weight: 700;
+    color: var(--ion-color-primary);
+  }
+
+  p {
+    color: var(--ion-color-medium);
+    margin-bottom: 30px;
+  }
+}
+
+ion-input {
+  --background: var(--ion-color-light);
+  margin-top: 10px;
+}

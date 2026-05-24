@@ -1,0 +1,7 @@
+{
+  "name": "barbershop",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="register-container">
+    <div class="ion-text-center">
+      <h2>Únete a la plataforma</h2>
+      <p>Completa tus datos para empezar</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <ion-input
+        label="Nombre Completo"
+        labelPlacement="floating"
+        fill="outline"
+        formControlName="name"
+        placeholder="Ej. Juan Pérez"
+        class="ion-margin-bottom"
+        errorText="El nombre es obligatorio">
+      </ion-input>
+
+      <ion-input
+        label="Correo electrónico"
+        labelPlacement="floating"
+        fill="outline"
+        type="email"
+        formControlName="email"
+        placeholder="correo@ejemplo.com"
+        class="ion-margin-bottom"
+        errorText="Ingresa un correo válido">
+      </ion-input>
+
+      <ion-input
+        label="Contraseña"
+        labelPlacement="floating"
+        fill="outline"
+        type="password"
+        formControlName="password"
+        placeholder="Mínimo 6 caracteres"
+        class="ion-margin-bottom"
+        errorText="La contraseña debe ser más larga">
+      </ion-input>
+
+      <ion-item lines="none" class="ion-margin-bottom">
+        <ion-checkbox formControlName="isActive" labelPlacement="end">
+          Acepto los términos y condiciones
+        </ion-checkbox>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [disabled]="!registerForm.valid">
+        <ion-spinner name="crescent" *ngIf="isSubmitting()"></ion-spinner>
+        <span *ngIf="!isSubmitting()">Crear Cuenta</span>
+      </ion-button>
+    </form>
+  </div>
+</ion-content>
