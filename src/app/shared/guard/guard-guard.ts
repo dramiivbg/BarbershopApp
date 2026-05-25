@@ -13,8 +13,10 @@ export const guardGuard: CanActivateFn = async(route, state) => {
   console.log(isLogin)
 
   if(!isLogin){
-    router.navigate(['/login'], {replaceUrl: true});
-    return false
+    debugger
+    await authService.logout();
+    router.navigate(['/type-user'], {replaceUrl: true});
+    return false;
   }
 
   return true;

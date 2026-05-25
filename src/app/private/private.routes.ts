@@ -1,21 +1,19 @@
 import { Routes } from '@angular/router';
+import { adminGuard} from '../shared/guard/admin-guard/admin-guard';
+import { clientGuard } from '../shared/guard/client-guard/client-guard';
 
 export const routes: Routes = [
   
+  
   {
     path: '',
-    loadComponent: () => import('./home/home.page').then( m => m.HomePage)
+    loadChildren: () => import('./client/client.routes').then( m => m.routes),
+    canActivateChild: [clientGuard]
   },
 
-//   {
-//     path: 'login',
-//     loadComponent: () =>
-//       import('./login/login.page').then((m) => m.LoginPage),
-//   },
-
-//     {
-//     path: 'register',
-//     loadComponent: () =>
-//       import('./register/register.page').then((m) => m.RegisterPage),
-//   }
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.routes').then( m => m.routes),
+    canActivateChild: [adminGuard]
+  }
 ];

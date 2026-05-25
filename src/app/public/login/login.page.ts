@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
 
         await this.storageService.set(APP_CONSTANTS.STORAGE_KEYS.USER_TOKEN, response.result.token);
 
-        this.router.navigate(['home'], {replaceUrl: true});
+        this.router.navigate(['private'], {replaceUrl: true});
       } catch (error:any) {
         this.messageService.message(TypeMessage.Error, error.message);
       }finally{

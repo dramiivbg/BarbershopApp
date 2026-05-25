@@ -1,0 +1,56 @@
+<ion-content class="ion-padding bck-gradient">
+  <div class="flex-container">
+    
+    <!-- Encabezado de la pantalla -->
+    <div class="header-section ion-text-center">
+      <h1>¡Te damos la bienvenida!</h1>
+      <p>Por favor, selecciona cómo deseas ingresar a la plataforma</p>
+    </div>
+
+    <!-- Contenedor de las Cards -->
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        
+        <!-- Opción: Cliente / Usuario -->
+        <ion-col size="12" size-md="5" class="ion-padding">
+          <ion-card class="role-card" (click)="seleccionarRol('usuario')">
+            <div class="icon-container user-icon">
+              <ion-icon name="person-outline"></ion-icon>
+            </div>
+            <ion-card-header>
+              <ion-card-title>Soy Cliente</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Quiero buscar las mejores barberías, agendar una cita y gestionar mis cortes favoritos.
+            </ion-card-content>
+            <div class="card-footer-action">
+              <span>Ingresar como cliente</span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </ion-card>
+        </ion-col>
+
+        <!-- Opción: Barbería -->
+        <ion-col size="12" size-md="5" class="ion-padding">
+          <ion-card class="role-card" (click)="seleccionarRol('barberia')">
+            <div class="icon-container barber-icon">
+              <ion-icon name="storefront-outline"></ion-icon>
+            </div>
+            <ion-card-header>
+              <ion-card-title>Soy Barbería / Barbero</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Quiero administrar mi negocio, gestionar la agenda de mis barberos y controlar mis ingresos.
+            </ion-card-content>
+            <div class="card-footer-action">
+              <span>Gestionar mi barbería</span>
+              <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>

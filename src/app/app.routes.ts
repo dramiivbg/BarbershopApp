@@ -5,12 +5,12 @@ export const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'private',
     pathMatch: 'full',
   },
   
   {
-    path: 'home',
+    path: 'private',
     loadChildren: () =>
       import('./private/private.routes').then((m) => m.routes),
       canActivate:[guardGuard]

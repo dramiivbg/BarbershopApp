@@ -57,8 +57,39 @@ export class AuthService {
     return token ? this.jwtHelper.getTokenExpirationDate(token) : null;
   }
 
+  async getToken(){
+    return await this.storageService.get(APP_CONSTANTS.STORAGE_KEYS.USER_TOKEN);
+  }
+
+  // Método nativo para decodificar el payload del JWT
+  decodeToken(token: string): any {
+    try {
+      // 1. Separar las tres partes del token y tomar la del medio (índice 1)
+      const payloadBase64 = token.split('.')[1];
+      
+      // 2. Reemplazar caracteres especiales del formato Base64URL al Base64 estándar
+      const base64 = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
+      
+      // 3. Decodificar la cadena Base64 manejando caracteres UTF-8 de forma segura
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split('')
+          .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
+      );
+
+      // 4. Retornar el objeto JSON listo
+      return JSON.parse(jsonPayload);
+    } catch (error) {
+      console.error('Error decodificando el token JWT:', error);
+      return null;
+    }
+  }
+
   async logout(){
     await this.storageService.remove(APP_CONSTANTS.STORAGE_KEYS.USER_TOKEN);
   }
+
+
   
 }

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-private',
   templateUrl: './private.component.html',
   styleUrls: ['./private.component.scss'],
+  
 })
 export class PrivateComponent  implements OnInit {
 

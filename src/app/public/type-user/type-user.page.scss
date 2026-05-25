@@ -1,0 +1,123 @@
+// Fondo con un degradado sutil y moderno
+.bck-gradient {
+  --background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+}
+
+// Contenedor para centrar el contenido verticalmente en pantallas grandes
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header-section {
+  margin-bottom: 2rem;
+  padding: 0 16px;
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--ion-color-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--ion-color-step-600, #666);
+  }
+}
+
+// Estilizado de las Cards
+.role-card {
+  background: var(--ion-color-white, #ffffff);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+
+  ion-card-header {
+    padding-top: 1rem;
+    
+    ion-card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ion-color-dark);
+      text-align: center;
+    }
+  }
+
+  ion-card-content {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--ion-color-step-500, #737373);
+    flex-grow: 1; // Hace que el contenido ocupe el espacio disponible
+  }
+}
+
+// Contenedores de Iconos
+.icon-container {
+  width: 80px;
+  height: 80px;
+  margin: 2rem auto 0 auto;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ion-icon {
+    font-size: 2.5rem;
+  }
+}
+
+// Colores personalizados por rol para guiar la vista
+.user-icon {
+  background-color: rgba(var(--ion-color-primary-rgb), 0.1);
+  ion-icon {
+    color: var(--ion-color-primary);
+  }
+}
+
+.barber-icon {
+  background-color: rgba(var(--ion-color-tertiary-rgb), 0.1);
+  ion-icon {
+    color: var(--ion-color-tertiary);
+  }
+}
+
+// Acción visual al final de la card
+.card-footer-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 1.5rem;
+  font-weight: 500;
+  color: var(--ion-color-primary);
+  border-top: 1px solid var(--ion-color-step-100, #f2f2f2);
+
+  ion-icon {
+    transition: transform 0.2s ease;
+  }
+}
+
+.role-card:hover .card-footer-action ion-icon {
+  transform: translateX(5px);
+}

@@ -1,0 +1,104 @@
+<ion-content class="ion-padding bck-gradient">
+  <div class="flex-container">
+    
+    <div class="back-nav">
+      <ion-button fill="clear" color="dark" (click)="regresar()">
+        <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+        Volver
+      </ion-button>
+    </div>
+
+    <ion-card class="login-card">
+      
+      <div class="ion-text-center card-header-section">
+        <div class="icon-badge">
+          <ion-icon [name]="esModoLogin ? 'storefront-outline' : 'business-outline'"></ion-icon>
+        </div>
+        <h2>{{ esModoLogin ? 'Panel de Barbería' : 'Registra tu Barbería' }}</h2>
+        <p>{{ esModoLogin ? 'Ingresa tus credenciales para administrar tu negocio' : 'Completa los datos para crear el perfil de tu negocio' }}</p>
+      </div>
+
+      <ion-card-content>
+        <form [formGroup]="barberiaForm" (ngSubmit)="enviarFormulario()">
+          
+          @if (!esModoLogin) {
+            <ion-item lines="none" class="custom-input-item">
+              <ion-icon name="text-outline" slot="start"></ion-icon>
+              <ion-input 
+                label="Nombre de la Barbería" 
+                labelPlacement="floating" 
+                type="text" 
+                formControlName="nombreBarberia"
+                placeholder="Ej. Barber Club 2026">
+              </ion-input>
+            </ion-item>
+          }
+
+          <ion-item lines="none" class="custom-input-item">
+            <ion-icon name="mail-outline" slot="start"></ion-icon>
+            <ion-input 
+              label="Correo Electrónico" 
+              labelPlacement="floating" 
+              type="email" 
+              formControlName="correo"
+              placeholder="barberia@correo.com">
+            </ion-input>
+          </ion-item>
+
+          <ion-item lines="none" class="custom-input-item">
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+            <ion-input 
+              label="Contraseña" 
+              labelPlacement="floating" 
+              [type]="mostrarPassword ? 'text' : 'password'" 
+              formControlName="password">
+              <ion-button slot="end" fill="clear" color="medium" (click)="togglePassword()" type="button">
+                <ion-icon [name]="mostrarPassword ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
+              </ion-button>
+            </ion-input>
+          </ion-item>
+
+          @if (!esModoLogin) {
+            <ion-item lines="none" class="custom-input-item">
+              <ion-icon name="call-outline" slot="start"></ion-icon>
+              <ion-input 
+                label="Teléfono de Contacto" 
+                labelPlacement="floating" 
+                type="tel" 
+                formControlName="telefono"
+                placeholder="+57 300 123 4567">
+              </ion-input>
+            </ion-item>
+          }
+
+          @if (esModoLogin) {
+            <div class="ion-text-end forgot-password">
+              <a (click)="recuperarPassword()">¿Olvidaste tu contraseña?</a>
+            </div>
+          }
+
+          <ion-button expand="block" type="submit" class="submit-btn ion-margin-top" [disabled]="barberiaForm.invalid">
+            @if(isSubmitting()){
+              <ion-spinner name="crescent" ></ion-spinner>
+            }@else{
+              <span >{{ esModoLogin ? 'Iniciar Sesión' : 'Crear Cuenta de Barbería' }}</span>
+            }
+          </ion-button>
+
+        </form>
+
+        <div class="ion-text-center toggle-mode-container">
+          <span>
+            {{ esModoLogin ? '¿Tu barbería no está registrada?' : '¿Ya tienes una cuenta registrada?' }}
+          </span>
+          <br>
+          <a class="toggle-link" (click)="cambiarModo()">
+            {{ esModoLogin ? 'Crear una cuenta ahora' : 'Inicia sesión aquí' }}
+          </a>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

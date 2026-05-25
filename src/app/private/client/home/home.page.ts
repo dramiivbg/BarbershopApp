@@ -19,6 +19,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    console.log('hola client', this.folder)
   }
 
 }
